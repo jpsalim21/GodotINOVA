@@ -16,7 +16,7 @@ func _on_area_entered(area):
 	print("Rodou essa parte")
 	var script = area.get_script()
 	if (script and script == Hitbox):
-		#var dano = script.dano
-		#lifeController.alterarVida(-dano)
+		var s = area as Hitbox
+		lifeController.alterarVida(-s.dano)
 		print("Apenas um teste")
 	pass # Replace with function body.
