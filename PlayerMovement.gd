@@ -40,12 +40,12 @@ func _updateAnimation():
 		if animacaoAtual != "Run":
 			animacaoAtual = "Run"
 			anim.play("Run")
-		if velocity.x > 0:
-			anim.flip_h = false
-		else:
-			anim.flip_h = true
 	else:
 		if animacaoAtual != "Idle":
 			animacaoAtual = "Idle"
 			anim.play("Idle")
+	if velocity.x > 0:
+			anim.flip_h = false
+	elif velocity.x < 0:
+		anim.flip_h = true
 	
