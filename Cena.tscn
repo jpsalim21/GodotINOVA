@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=23 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_ryt7m"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_e6kmr"]
 [ext_resource type="Texture2D" uid="uid://bcx7up4kwa754" path="res://Sprites/Personagem/Idle-Sheet.png" id="2_fqbq8"]
 [ext_resource type="Texture2D" uid="uid://ci4ofrbtnixtf" path="res://Sprites/Personagem/Run-Sheet.png" id="4_cpa8f"]
+[ext_resource type="Texture2D" uid="uid://dsk5lgvb0tt1i" path="res://Sprites/Personagem/Jump-All-Sheet.png" id="4_via3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4wtj"]
 resource_name = "Tiles"
@@ -1445,6 +1446,10 @@ region = Rect2(192, 0, 64, 80)
 atlas = ExtResource("2_fqbq8")
 region = Rect2(0, 0, 64, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3omo"]
+atlas = ExtResource("4_via3n")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_53vc8"]
 atlas = ExtResource("4_cpa8f")
 region = Rect2(0, 0, 80, 80)
@@ -1498,6 +1503,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_i3omo")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_53vc8")
 }, {
 "duration": 1.0,
@@ -1543,10 +1556,9 @@ shape = SubResource("CapsuleShape2D_if1qv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_fdhdd")
-animation = &"Idle"
+animation = &"Jump"
 autoplay = "Idle"
-frame = 3
-frame_progress = 0.580031
+frame_progress = 0.532121
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)

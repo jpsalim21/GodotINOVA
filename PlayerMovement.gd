@@ -32,7 +32,11 @@ func _physics_process(delta):
 	_updateAnimation()
 
 func _updateAnimation():
-	if velocity.x != 0:
+	if velocity.y != 0:
+		if animacaoAtual != "Jump":
+			animacaoAtual = "Jump"
+			anim.play("Jump")
+	elif velocity.x != 0:
 		if animacaoAtual != "Run":
 			animacaoAtual = "Run"
 			anim.play("Run")
