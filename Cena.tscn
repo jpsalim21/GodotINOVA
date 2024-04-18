@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=21 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_ryt7m"]
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="2_e6kmr"]
 [ext_resource type="Texture2D" uid="uid://bcx7up4kwa754" path="res://Sprites/Personagem/Idle-Sheet.png" id="2_fqbq8"]
+[ext_resource type="Texture2D" uid="uid://ci4ofrbtnixtf" path="res://Sprites/Personagem/Run-Sheet.png" id="4_cpa8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4wtj"]
 resource_name = "Tiles"
@@ -1428,6 +1429,103 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 radius = 7.0
 height = 48.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y04ps"]
+atlas = ExtResource("2_fqbq8")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek7s2"]
+atlas = ExtResource("2_fqbq8")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3u8n"]
+atlas = ExtResource("2_fqbq8")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2c67"]
+atlas = ExtResource("2_fqbq8")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53vc8"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6bfp"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncvvf"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktmdj"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xtfx"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ovib"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhc6k"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e52j"]
+atlas = ExtResource("4_cpa8f")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdhdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y04ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek7s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3u8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2c67")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53vc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6bfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncvvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktmdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xtfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ovib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhc6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e52j")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 12.0
+}]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1440,12 +1538,15 @@ layer_0/tile_data = PackedInt32Array(65536, 131072, 0, 131072, 131072, 1, 196608
 position = Vector2(37, -2)
 script = ExtResource("2_e6kmr")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_fqbq8")
-hframes = 4
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_if1qv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_fdhdd")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.580031
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
