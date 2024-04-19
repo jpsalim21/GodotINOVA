@@ -23,7 +23,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_select") and is_on_floor():
+	if Input.is_action_just_pressed("ui_select") and is_on_floor() and !atacando:
 		velocity.y = JUMP_VELOCITY
 		
 	if Input.is_action_just_pressed("Atacar") and animacaoAtual != "Attack1":
