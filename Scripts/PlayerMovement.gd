@@ -21,6 +21,9 @@ var jumpInput = false
 @onready var coyotteTimer = $CoyotteTime
 var coyote = false
 
+@onready var attackTimer = $AttackBuffer
+var atkInput = false
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -39,7 +42,11 @@ func _physics_process(delta):
 		coyote = false
 		velocity.y = JUMP_VELOCITY
 		
-	if Input.is_action_just_pressed("Atacar") and animacaoAtual != "Attack1":
+	if Input.is_action_just_pressed("Atacar"):
+		atkInput = true
+		attackTimer.start()
+	
+	if atkInput and animacaoAtual != "Attack1":
 		atacar()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -101,4 +108,9 @@ func _on_jump_buffer_timeout():
 
 func _on_coyotte_time_timeout():
 	coyote = false
+	pass # Replace with function body.
+
+
+func _on_attack_buffer_timeout():
+	atkInput = false
 	pass # Replace with function body.
