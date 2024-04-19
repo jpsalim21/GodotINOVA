@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=43 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_1oy3f"]
 [ext_resource type="Texture2D" uid="uid://bcx7up4kwa754" path="res://Sprites/Personagem/Idle-Sheet.png" id="3_da37c"]
+[ext_resource type="Texture2D" uid="uid://bwymife0cgidb" path="res://Sprites/Personagem/Attack-01-Sheet.png" id="3_xffu6"]
 [ext_resource type="Texture2D" uid="uid://dsk5lgvb0tt1i" path="res://Sprites/Personagem/Jump-All-Sheet.png" id="4_aibur"]
 [ext_resource type="Texture2D" uid="uid://ci4ofrbtnixtf" path="res://Sprites/Personagem/Run-Sheet.png" id="5_0qa4p"]
 [ext_resource type="Script" path="res://Cenas/FlashSprite.gd" id="6_06iyu"]
@@ -1435,6 +1436,38 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 radius = 7.0
 height = 48.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkln7"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(0, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tciq7"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(96, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8axc"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(192, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx7s6"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(288, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3vnr"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(384, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ou5t"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(480, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j5vo"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(576, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfo7f"]
+atlas = ExtResource("3_xffu6")
+region = Rect2(672, 0, 96, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y04ps"]
 atlas = ExtResource("3_da37c")
 region = Rect2(64, 0, 64, 80)
@@ -1505,6 +1538,40 @@ region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fdhdd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkln7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tciq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8axc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx7s6")
+}],
+"loop": false,
+"name": &"Attack1",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3vnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ou5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j5vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfo7f")
+}],
+"loop": false,
+"name": &"Attack2",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y04ps")
@@ -1595,10 +1662,8 @@ shape = SubResource("CapsuleShape2D_if1qv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" node_paths=PackedStringArray("lifeController")]
 sprite_frames = SubResource("SpriteFrames_fdhdd")
-animation = &"Jump"
+animation = &"Attack2"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
 script = ExtResource("6_06iyu")
 flashColor = Color(100, 100, 100, 1)
 lifeController = NodePath("../LifeController")
@@ -1633,17 +1698,18 @@ drag_bottom_margin = 0.49
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TesteDano" type="Area2D" parent="."]
 position = Vector2(-131, 3)
 script = ExtResource("8_uf1x4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="TesteDano"]
 position = Vector2(0, 5.68434e-14)
 scale = Vector2(0.195312, 0.195312)
 texture = ExtResource("8_n8glw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TesteDano"]
 shape = SubResource("CircleShape2D_e6tx4")
 
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CharacterBody2D/AnimatedSprite2D/Timer" to="CharacterBody2D/AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="CharacterBody2D/Hurtbox" to="CharacterBody2D/Hurtbox" method="_on_area_entered"]
