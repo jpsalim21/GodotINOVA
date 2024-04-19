@@ -1657,6 +1657,13 @@ layer_0/tile_data = PackedInt32Array(65536, 131072, 0, 131072, 131072, 1, 196608
 position = Vector2(37, -2)
 script = ExtResource("2_1oy3f")
 
+[node name="JumpBuffer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyotteTime" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_if1qv")
 
@@ -1710,6 +1717,8 @@ texture = ExtResource("8_n8glw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TesteDano"]
 shape = SubResource("CircleShape2D_e6tx4")
 
+[connection signal="timeout" from="CharacterBody2D/JumpBuffer" to="CharacterBody2D" method="_on_jump_buffer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/CoyotteTime" to="CharacterBody2D" method="_on_coyotte_time_timeout"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CharacterBody2D/AnimatedSprite2D/Timer" to="CharacterBody2D/AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="CharacterBody2D/Hurtbox" to="CharacterBody2D/Hurtbox" method="_on_area_entered"]

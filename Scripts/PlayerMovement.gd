@@ -16,6 +16,10 @@ var attack1 = true
 var atacando = false
 var direcaoAtaque
 
+@onready var jumpBufferTimer = $JumpBuffer
+var jumpInput = false
+@onready var coyotteTimer = $CoyotteTime
+var coyote = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -23,7 +27,16 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_select") and is_on_floor() and !atacando:
+	if Input.is_action_just_pressed("ui_select"):
+		jumpBufferTimer.start()
+		jumpInput = true
+	
+	if is_on_floor():
+		coyotteTimer.start()
+		coyote = true
+	
+	if jumpInput and coyote and !atacando:
+		coyote = false
 		velocity.y = JUMP_VELOCITY
 		
 	if Input.is_action_just_pressed("Atacar") and animacaoAtual != "Attack1":
@@ -79,3 +92,13 @@ func _on_animated_sprite_2d_animation_finished():
 	animationLock = false
 	atacando = false
 	_updateAnimation()
+
+
+func _on_jump_buffer_timeout():
+	jumpInput = false
+	pass # Replace with function body.
+
+
+func _on_coyotte_time_timeout():
+	coyote = false
+	pass # Replace with function body.
