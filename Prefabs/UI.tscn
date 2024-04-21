@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca4a01y4ppqp4"]
+
+[ext_resource type="Texture2D" uid="uid://dqhwxt33bdit1" path="res://Sprites/UI/Misc/Heart.png" id="1_1lbde"]
+[ext_resource type="Texture2D" uid="uid://cmpcc0f83qou2" path="res://Sprites/UI/Misc/Golden Coin.png" id="2_entp0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="LifeUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 284.0
+offset_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridContainer2" type="GridContainer" parent="LifeUI"]
+offset_right = 200.0
+offset_bottom = 32.0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="LifeUI/GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect2" type="TextureRect" parent="LifeUI/GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect3" type="TextureRect" parent="LifeUI/GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect4" type="TextureRect" parent="LifeUI/GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect5" type="TextureRect" parent="LifeUI/GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="GridContainer" type="GridContainer" parent="LifeUI"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 32.0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="LifeUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect2" type="TextureRect" parent="LifeUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect3" type="TextureRect" parent="LifeUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect4" type="TextureRect" parent="LifeUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="TextureRect5" type="TextureRect" parent="LifeUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbde")
+
+[node name="Pontuacao" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 64.0
+offset_right = 243.0
+offset_bottom = 133.0
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Pontuacao"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 70.0
+offset_bottom = 66.0
+texture = ExtResource("2_entp0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pontuacao"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 6.0
+offset_right = 181.0
+offset_bottom = 61.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "100"
+fit_content = true
+scroll_active = false

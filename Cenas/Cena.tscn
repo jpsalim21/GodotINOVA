@@ -1,12 +1,13 @@
-[gd_scene load_steps=43 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=44 format=3 uid="uid://bgrprgbwgcknc"]
 
+[ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_1oy3f"]
 [ext_resource type="Texture2D" uid="uid://bcx7up4kwa754" path="res://Sprites/Personagem/Idle-Sheet.png" id="3_da37c"]
 [ext_resource type="Texture2D" uid="uid://bwymife0cgidb" path="res://Sprites/Personagem/Attack-01-Sheet.png" id="3_xffu6"]
 [ext_resource type="Texture2D" uid="uid://dsk5lgvb0tt1i" path="res://Sprites/Personagem/Jump-All-Sheet.png" id="4_aibur"]
 [ext_resource type="Texture2D" uid="uid://ci4ofrbtnixtf" path="res://Sprites/Personagem/Run-Sheet.png" id="5_0qa4p"]
-[ext_resource type="Script" path="res://Cenas/FlashSprite.gd" id="6_06iyu"]
+[ext_resource type="Script" path="res://Scripts/FlashSprite.gd" id="6_06iyu"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="6_osrio"]
 [ext_resource type="Script" path="res://Scripts/LifeController.gd" id="6_ssuaw"]
 [ext_resource type="Texture2D" uid="uid://drc7277m4us8l" path="res://icon.svg" id="8_n8glw"]
@@ -1647,6 +1648,8 @@ height = 48.0
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasLayer" parent="." instance=ExtResource("1_n0mgs")]
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_br85n")
 format = 2
@@ -1663,6 +1666,10 @@ one_shot = true
 
 [node name="CoyotteTime" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.2
+
+[node name="AttackBuffer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_if1qv")
@@ -1692,10 +1699,6 @@ lifeController = NodePath("../LifeController")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
 shape = SubResource("CapsuleShape2D_vhmxd")
 
-[node name="AttackBuffer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.2
-one_shot = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(37, -2)
 zoom = Vector2(2.5, 2.5)
@@ -1723,7 +1726,7 @@ shape = SubResource("CircleShape2D_e6tx4")
 
 [connection signal="timeout" from="CharacterBody2D/JumpBuffer" to="CharacterBody2D" method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/CoyotteTime" to="CharacterBody2D" method="_on_coyotte_time_timeout"]
+[connection signal="timeout" from="CharacterBody2D/AttackBuffer" to="CharacterBody2D" method="_on_attack_buffer_timeout"]
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="CharacterBody2D/AnimatedSprite2D/Timer" to="CharacterBody2D/AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="CharacterBody2D/Hurtbox" to="CharacterBody2D/Hurtbox" method="_on_area_entered"]
-[connection signal="timeout" from="CharacterBody2D/AttackBuffer" to="CharacterBody2D" method="_on_attack_buffer_timeout"]

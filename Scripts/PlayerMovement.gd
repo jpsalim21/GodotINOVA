@@ -51,8 +51,8 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_axis("ui_left", "ui_right")
-	if(atacando):
-		velocity.x = direcaoAtaque * (SPEED / 2)
+	if atacando and is_on_floor():
+		velocity.x = 0
 	else:
 		if direction:
 			velocity.x = direction * SPEED
