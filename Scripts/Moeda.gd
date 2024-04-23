@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var lifeController : LifeController
+signal pegouItem
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +13,8 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	var script = area as Hitbox
-	if (script):
-		lifeController.alterarVida(-script.dano)
+	if (area.name == "PlayerHurtbox"):
+		print("Algo tocou em mim", self)
+		%GameController.aumentarMoedas()
+		queue_free()
 	pass # Replace with function body.

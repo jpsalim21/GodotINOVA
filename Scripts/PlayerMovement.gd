@@ -60,7 +60,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 	_updateAnimation()
-	
+
 func atacar():
 	if animationLock: return
 	if attack1:
@@ -100,16 +100,13 @@ func _on_animated_sprite_2d_animation_finished():
 	atacando = false
 	_updateAnimation()
 
-
 func _on_jump_buffer_timeout():
 	jumpInput = false
 	pass # Replace with function body.
 
-
 func _on_coyotte_time_timeout():
 	coyote = false
 	pass # Replace with function body.
-
 
 func _on_attack_buffer_timeout():
 	atkInput = false

@@ -16,6 +16,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="GridContainer2" type="GridContainer" parent="LifeUI"]
+layout_mode = 0
 offset_right = 200.0
 offset_bottom = 32.0
 scale = Vector2(1.5, 1.5)
