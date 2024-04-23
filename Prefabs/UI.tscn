@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca4a01y4ppqp4"]
+[gd_scene load_steps=5 format=3 uid="uid://ca4a01y4ppqp4"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwxt33bdit1" path="res://Sprites/UI/Misc/Heart.png" id="1_1lbde"]
+[ext_resource type="Script" path="res://Prefabs/UIController.gd" id="1_v7f32"]
 [ext_resource type="Texture2D" uid="uid://cmpcc0f83qou2" path="res://Sprites/UI/Misc/Golden Coin.png" id="2_entp0"]
+[ext_resource type="Script" path="res://Prefabs/UIMoedas.gd" id="2_v2jxl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_v7f32")
 
 [node name="LifeUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 9.0
 offset_top = 7.0
-offset_right = 284.0
+offset_right = 316.0
 offset_bottom = 75.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -86,6 +89,7 @@ offset_top = 64.0
 offset_right = 243.0
 offset_bottom = 133.0
 size_flags_horizontal = 0
+script = ExtResource("2_v2jxl")
 
 [node name="TextureRect" type="TextureRect" parent="Pontuacao"]
 layout_mode = 0
