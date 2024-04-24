@@ -7,6 +7,7 @@ signal morreu
 
 @export var _vidaMax = 100
 var _vida
+var morto = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,8 @@ func alterarVida(qtd : int):
 	print("Vida: " + str(_vida))
 	if(qtd < 0):
 		if(_vida <= 0):
-			morreu.emit()
+			if not morto:
+				morreu.emit()
+				morto = true
 		else:
 			tomouDano.emit()

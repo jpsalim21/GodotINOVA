@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=59 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/FlashSprite.gd" id="6_06iyu"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="6_osrio"]
 [ext_resource type="Script" path="res://Scripts/LifeController.gd" id="6_ssuaw"]
+[ext_resource type="Texture2D" uid="uid://034lvo8qi0cp" path="res://Sprites/Personagem/Dead-Sheet.png" id="8_0xgvl"]
 [ext_resource type="Texture2D" uid="uid://drc7277m4us8l" path="res://icon.svg" id="8_n8glw"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="8_uf1x4"]
 [ext_resource type="Script" path="res://Scripts/Moeda.gd" id="13_j25s3"]
@@ -1476,6 +1477,38 @@ region = Rect2(576, 0, 96, 80)
 atlas = ExtResource("3_xffu6")
 region = Rect2(672, 0, 96, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_33vgs"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chjb7"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7n0f"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04b8o"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yat2q"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oofgn"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nijx"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xramr"]
+atlas = ExtResource("8_0xgvl")
+region = Rect2(560, 0, 80, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y04ps"]
 atlas = ExtResource("3_da37c")
 region = Rect2(64, 0, 64, 80)
@@ -1582,6 +1615,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_33vgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chjb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7n0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04b8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yat2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oofgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nijx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xramr")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y04ps")
 }, {
 "duration": 1.0,
@@ -1652,8 +1714,10 @@ radius = 7.0
 height = 48.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llh55"]
+size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hwi7"]
+size = Vector2(30, 30)
 
 [node name="Node2D" type="Node2D"]
 
@@ -1726,9 +1790,12 @@ one_shot = true
 shape = SubResource("CapsuleShape2D_if1qv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" node_paths=PackedStringArray("lifeController")]
+position = Vector2(9, 7)
 sprite_frames = SubResource("SpriteFrames_fdhdd")
-animation = &"Attack2"
+animation = &"Die"
 autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
 script = ExtResource("6_06iyu")
 flashColor = Color(100, 100, 100, 1)
 lifeController = NodePath("../LifeController")
@@ -1742,6 +1809,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="LifeController" type="Node2D" parent="Player"]
 script = ExtResource("6_ssuaw")
+_vidaMax = 5
 
 [node name="PlayerHurtbox" type="Area2D" parent="Player" node_paths=PackedStringArray("lifeController")]
 collision_layer = 4
@@ -1766,19 +1834,20 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Inimigo" type="CharacterBody2D" parent="."]
-position = Vector2(-311, 13)
+position = Vector2(-311, 2)
 collision_mask = 2
 script = ExtResource("16_0ducf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Inimigo"]
-scale = Vector2(0.15, 0.15)
+position = Vector2(1.33514e-05, 0)
+scale = Vector2(0.232813, 0.232813)
 texture = ExtResource("8_n8glw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigo"]
 shape = SubResource("RectangleShape2D_llh55")
 
 [node name="RayCast2D" type="RayCast2D" parent="Inimigo"]
-position = Vector2(13, 4)
+position = Vector2(20, 11)
 target_position = Vector2(0, 15)
 collision_mask = 2
 
@@ -1786,9 +1855,14 @@ collision_mask = 2
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("8_uf1x4")
+dano = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigo/Area2D"]
 shape = SubResource("RectangleShape2D_1hwi7")
+
+[node name="LifeController" type="Node" parent="Inimigo"]
+script = ExtResource("6_ssuaw")
+_vidaMax = 2
 
 [connection signal="area_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_area_entered"]
 [connection signal="body_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_body_entered"]

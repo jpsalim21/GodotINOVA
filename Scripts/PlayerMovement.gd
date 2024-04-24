@@ -9,6 +9,7 @@ var direction
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
+@onready var life : LifeController = $LifeController
 
 var animacaoAtual = "Idle"
 var animationLock = false
@@ -23,6 +24,10 @@ var coyote = false
 
 @onready var attackTimer = $AttackBuffer
 var atkInput = false
+
+func _ready():
+	life.morreu.connect(_morrer)
+	pass
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -78,6 +83,7 @@ func atacar():
 
 func _updateAnimation():
 	if animationLock: return
+	anim.position = Vector2.ZERO
 	if velocity.y != 0:
 		if animacaoAtual != "Jump":
 			animacaoAtual = "Jump"
@@ -96,8 +102,9 @@ func _updateAnimation():
 		anim.flip_h = true
 
 func _on_animated_sprite_2d_animation_finished():
-	animationLock = false
-	atacando = false
+	if atacando:
+		animationLock = false
+		atacando = false
 	_updateAnimation()
 
 func _on_jump_buffer_timeout():
@@ -111,3 +118,10 @@ func _on_coyotte_time_timeout():
 func _on_attack_buffer_timeout():
 	atkInput = false
 	pass # Replace with function body.
+
+func _morrer():
+	animationLock = true
+	anim.position = Vector2(9, 7)
+	anim.play("Die")
+	set_physics_process(false)
+	pass
