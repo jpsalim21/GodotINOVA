@@ -2,7 +2,7 @@ extends Node
 
 class_name LifeController
 
-signal tomouDano
+signal tomouDano(vida)
 signal morreu
 
 @export var _vidaMax = 100
@@ -22,5 +22,4 @@ func alterarVida(qtd : int):
 			if not morto:
 				morreu.emit()
 				morto = true
-		else:
-			tomouDano.emit()
+		tomouDano.emit(_vida)

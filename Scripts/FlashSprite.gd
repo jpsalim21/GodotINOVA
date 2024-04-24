@@ -12,7 +12,7 @@ func _ready():
 	lifeController.tomouDano.connect(_flash)
 	pass # Replace with function body.
 
-func _flash():
+func _flash(valor):
 	self_modulate = flashColor
 	time.start()
 
