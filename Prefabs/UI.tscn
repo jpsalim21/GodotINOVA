@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca4a01y4ppqp4"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwxt33bdit1" path="res://Sprites/UI/Misc/Heart.png" id="1_1lbde"]
-[ext_resource type="Script" path="res://Prefabs/UIController.gd" id="1_v7f32"]
+[ext_resource type="Script" path="res://Scripts/UIController.gd" id="1_v7f32"]
 [ext_resource type="Texture2D" uid="uid://cmpcc0f83qou2" path="res://Sprites/UI/Misc/Golden Coin.png" id="2_entp0"]
-[ext_resource type="Script" path="res://Prefabs/LifeUI.gd" id="2_m3mx4"]
-[ext_resource type="Script" path="res://Prefabs/UIMoedas.gd" id="2_v2jxl"]
+[ext_resource type="Script" path="res://Scripts/LifeUI.gd" id="2_m3mx4"]
+[ext_resource type="Script" path="res://Scripts/UIMoedas.gd" id="2_v2jxl"]
 [ext_resource type="FontFile" uid="uid://5ean8rxmtb5" path="res://Sprites/alagard.ttf" id="6_xj36x"]
 
 [node name="CanvasLayer" type="CanvasLayer"]

@@ -16,7 +16,7 @@ func _ready():
 
 func alterarVida(qtd : int):
 	_vida = _vida + qtd
-	print("Vida: " + str(_vida))
+	print("Vida: " + str(_vida) + " no " + name)
 	if(qtd < 0):
 		if(_vida <= 0):
 			if not morto:

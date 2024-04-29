@@ -10,6 +10,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 @onready var life : LifeController = $LifeController
+@onready var hitbox : Node2D = $PlayerHitbox
+@onready var collissionHitbox : CollisionShape2D = $PlayerHitbox/CollisionShape2D
 
 var animacaoAtual = "Idle"
 var animationLock = false
@@ -50,6 +52,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Atacar"):
 		atkInput = true
 		attackTimer.start()
+		collissionHitbox.disabled = false
 	
 	if atkInput and animacaoAtual != "Attack1":
 		atacar()
@@ -98,13 +101,16 @@ func _updateAnimation():
 			anim.play("Idle")
 	if velocity.x > 0:
 			anim.flip_h = false
+			hitbox.scale.x = 1
 	elif velocity.x < 0:
 		anim.flip_h = true
+		hitbox.scale.x = -1
 
 func _on_animated_sprite_2d_animation_finished():
 	if atacando:
 		animationLock = false
 		atacando = false
+		collissionHitbox.disabled = true
 	_updateAnimation()
 
 func _on_jump_buffer_timeout():

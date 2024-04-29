@@ -10,6 +10,10 @@ var speed = 100.0
 @onready var sprite : Sprite2D = $Sprite2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	var life : LifeController = $LifeController
+	life.morreu.connect(morrer)
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -26,3 +30,6 @@ func _flip():
 	rayCast.position.x = -rayCast.position.x
 	sprite.flip_h = !sprite.flip_h
 	pass
+
+func morrer():
+	queue_free()
