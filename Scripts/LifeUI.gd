@@ -8,7 +8,7 @@ class_name LifeUI extends Control
 	$GridContainer/TextureRect5
 ]
 
-func atualizaVidaUI(vidaAtual):
+func atualizaVidaUI(vidaAtual, dir):
 	for i in range(0, vidaAtual):
 		hearts[i].visible = true
 	

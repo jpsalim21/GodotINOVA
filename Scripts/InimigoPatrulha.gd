@@ -6,22 +6,30 @@ extends CharacterBody2D
 # Colocar o layer 3 para colisão de hitbox
 
 var speed = 100.0
+var hitSpeed = 200.0
 @onready var rayCast : RayCast2D = $RayCast2D
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var hitTimer : Timer = $HitTimer
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var movimentando = true
 
 func _ready():
 	var life : LifeController = $LifeController
 	life.morreu.connect(morrer)
+	life.tomouDano.connect(tomouHit)
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
 	if not rayCast.is_colliding() and is_on_floor():
 		_flip()
 	
-	velocity.x = speed
+	if movimentando:
+		velocity.x = speed
+	else:
+		velocity.x = hitSpeed
 	
 	move_and_slide()
 
@@ -33,3 +41,12 @@ func _flip():
 
 func morrer():
 	queue_free()
+
+func tomouHit(vida, dir):
+	hitTimer.start()
+	hitSpeed = abs(hitSpeed) * dir
+	movimentando = false
+
+func _on_hit_timer_timeout():
+	movimentando = true
+	pass # Replace with function body.

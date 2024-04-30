@@ -15,5 +15,7 @@ func _process(delta):
 func _on_area_entered(area):
 	var script = area as Hitbox
 	if (script):
-		lifeController.alterarVida(-script.dano)
+		var dir = 1
+		if area.global_position.x > global_position.x: dir = -1
+		lifeController.alterarVida(-script.dano, dir)
 	pass # Replace with function body.

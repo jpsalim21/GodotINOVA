@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Node2D
 
 @export var flashColor : Color
 var defaultColor : Color
@@ -12,7 +12,7 @@ func _ready():
 	lifeController.tomouDano.connect(_flash)
 	pass # Replace with function body.
 
-func _flash(valor):
+func _flash(valor, dir):
 	self_modulate = flashColor
 	time.start()
 
