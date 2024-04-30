@@ -1436,10 +1436,10 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Fundo" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+[node name="TextureRect" type="TextureRect" parent="Fundo"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1458,6 +1458,28 @@ scale = Vector2(0.625, 0.625)
 texture = ExtResource("13_xr8jq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda"]
+shape = SubResource("RectangleShape2D_iy0hb")
+
+[node name="Moeda4" type="Area2D" parent="Coletaveis"]
+position = Vector2(-104, 15)
+script = ExtResource("13_j25s3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda4"]
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("13_xr8jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda4"]
+shape = SubResource("RectangleShape2D_iy0hb")
+
+[node name="Moeda5" type="Area2D" parent="Coletaveis"]
+position = Vector2(-133, 14)
+script = ExtResource("13_j25s3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda5"]
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("13_xr8jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda5"]
 shape = SubResource("RectangleShape2D_iy0hb")
 
 [node name="Moeda2" type="Area2D" parent="Coletaveis"]
@@ -1519,12 +1541,18 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_top_margin = 0.3
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [connection signal="area_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_area_entered"]
 [connection signal="body_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_body_entered"]
+[connection signal="area_entered" from="Coletaveis/Moeda4" to="Coletaveis/Moeda4" method="_on_area_entered"]
+[connection signal="body_entered" from="Coletaveis/Moeda4" to="Coletaveis/Moeda4" method="_on_body_entered"]
+[connection signal="area_entered" from="Coletaveis/Moeda5" to="Coletaveis/Moeda5" method="_on_area_entered"]
+[connection signal="body_entered" from="Coletaveis/Moeda5" to="Coletaveis/Moeda5" method="_on_body_entered"]
 [connection signal="area_entered" from="Coletaveis/Moeda2" to="Coletaveis/Moeda2" method="_on_area_entered"]
 [connection signal="body_entered" from="Coletaveis/Moeda2" to="Coletaveis/Moeda2" method="_on_body_entered"]
 [connection signal="area_entered" from="Coletaveis/Moeda3" to="Coletaveis/Moeda3" method="_on_area_entered"]
