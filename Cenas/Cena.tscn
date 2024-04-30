@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=12 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
+[ext_resource type="Texture2D" uid="uid://dy8gglsx36i5s" path="res://Sprites/Background.png" id="5_r3u66"]
 [ext_resource type="PackedScene" uid="uid://dcoru4ru24o04" path="res://Prefabs/player.tscn" id="6_mlxbd"]
 [ext_resource type="PackedScene" uid="uid://dwuga80ho5npi" path="res://Prefabs/inimigo.tscn" id="7_e5y33"]
 [ext_resource type="Script" path="res://Scripts/Moeda.gd" id="13_j25s3"]
@@ -1435,9 +1436,16 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GameController" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("15_n36ye")
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_r3u66")
 
 [node name="Coletaveis" type="Node" parent="."]
 
@@ -1474,7 +1482,22 @@ texture = ExtResource("13_xr8jq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda3"]
 shape = SubResource("RectangleShape2D_iy0hb")
 
+[node name="Inimigos" type="Node" parent="."]
+
+[node name="Inimigo" parent="Inimigos" instance=ExtResource("7_e5y33")]
+position = Vector2(-320, -3)
+
+[node name="Inimigo2" parent="Inimigos" instance=ExtResource("7_e5y33")]
+position = Vector2(491, -61)
+
+[node name="Inimigo3" parent="Inimigos" instance=ExtResource("7_e5y33")]
+position = Vector2(938, -56)
+
 [node name="CanvasLayer" parent="." instance=ExtResource("1_n0mgs")]
+
+[node name="GameController" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_n36ye")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_br85n")
@@ -1497,18 +1520,8 @@ position_smoothing_speed = 8.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.3
-drag_bottom_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="Inimigo" parent="." instance=ExtResource("7_e5y33")]
-position = Vector2(-320, -3)
-
-[node name="Inimigo2" parent="." instance=ExtResource("7_e5y33")]
-position = Vector2(491, -61)
-
-[node name="Inimigo3" parent="." instance=ExtResource("7_e5y33")]
-position = Vector2(938, -56)
 
 [connection signal="area_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_area_entered"]
 [connection signal="body_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_body_entered"]

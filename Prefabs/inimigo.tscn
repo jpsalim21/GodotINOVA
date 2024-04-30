@@ -65,4 +65,5 @@ lifeController = NodePath("../LifeController")
 shape = SubResource("RectangleShape2D_u0dys")
 
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="Sprite2D/Timer" to="Sprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

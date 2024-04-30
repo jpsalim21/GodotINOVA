@@ -17,5 +17,6 @@ func _flash(valor, dir):
 	time.start()
 
 func _on_timer_timeout():
+	print("Retornou para cor principal")
 	self_modulate = defaultColor
 	pass # Replace with function body.
