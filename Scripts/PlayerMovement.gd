@@ -27,9 +27,20 @@ var coyote = false
 @onready var attackTimer = $AttackBuffer
 var atkInput = false
 
+var atkSound = preload("res://Sons/56_Attack_03.wav")
+var jumpSound = preload("res://Sons/30_Jump_03.wav")
+var hitSound = preload("res://Sons/61_Hit_03.wav")
+
+@onready var sound = $Som
+
 func _ready():
 	life.morreu.connect(_morrer)
+	life.tomouDano.connect(tomouHit)
 	pass
+
+func tomouHit(vida, dir):
+	sound.stream = hitSound
+	sound.play()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -47,6 +58,8 @@ func _physics_process(delta):
 	
 	if jumpInput and coyote and !atacando:
 		coyote = false
+		sound.stream = jumpSound
+		sound.play()
 		velocity.y = JUMP_VELOCITY
 		
 	if Input.is_action_just_pressed("Atacar"):
@@ -71,6 +84,8 @@ func _physics_process(delta):
 
 func atacar():
 	if animationLock: return
+	sound.stream = atkSound
+	sound.play()
 	if attack1:
 		attack1 = false
 		animationLock = true

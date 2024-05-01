@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=10 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
+[ext_resource type="PackedScene" uid="uid://12yhscyk5v85" path="res://Prefabs/moeda.tscn" id="2_taxlc"]
 [ext_resource type="Texture2D" uid="uid://dy8gglsx36i5s" path="res://Sprites/Background.png" id="5_r3u66"]
 [ext_resource type="PackedScene" uid="uid://dcoru4ru24o04" path="res://Prefabs/player.tscn" id="6_mlxbd"]
 [ext_resource type="PackedScene" uid="uid://dwuga80ho5npi" path="res://Prefabs/inimigo.tscn" id="7_e5y33"]
-[ext_resource type="Script" path="res://Scripts/Moeda.gd" id="13_j25s3"]
-[ext_resource type="Texture2D" uid="uid://dfe02nrlbg6ew" path="res://Sprites/UI/Misc/Copper Coin.png" id="13_xr8jq"]
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="15_n36ye"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy0hb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4wtj"]
 resource_name = "Tiles"
@@ -1449,60 +1446,22 @@ texture = ExtResource("5_r3u66")
 
 [node name="Coletaveis" type="Node" parent="."]
 
-[node name="Moeda" type="Area2D" parent="Coletaveis"]
-position = Vector2(-72, 15)
-script = ExtResource("13_j25s3")
+[node name="Moeda" parent="Coletaveis" instance=ExtResource("2_taxlc")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda"]
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("13_xr8jq")
+[node name="Moeda2" parent="Coletaveis" instance=ExtResource("2_taxlc")]
+position = Vector2(-102, 14)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda"]
-shape = SubResource("RectangleShape2D_iy0hb")
+[node name="Moeda3" parent="Coletaveis" instance=ExtResource("2_taxlc")]
+position = Vector2(-128, 15)
 
-[node name="Moeda4" type="Area2D" parent="Coletaveis"]
-position = Vector2(-104, 15)
-script = ExtResource("13_j25s3")
+[node name="Moeda4" parent="Coletaveis" instance=ExtResource("2_taxlc")]
+position = Vector2(150, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda4"]
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("13_xr8jq")
+[node name="Moeda5" parent="Coletaveis" instance=ExtResource("2_taxlc")]
+position = Vector2(262, 6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda4"]
-shape = SubResource("RectangleShape2D_iy0hb")
-
-[node name="Moeda5" type="Area2D" parent="Coletaveis"]
-position = Vector2(-133, 14)
-script = ExtResource("13_j25s3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda5"]
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("13_xr8jq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda5"]
-shape = SubResource("RectangleShape2D_iy0hb")
-
-[node name="Moeda2" type="Area2D" parent="Coletaveis"]
-position = Vector2(266, 8)
-script = ExtResource("13_j25s3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda2"]
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("13_xr8jq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda2"]
-shape = SubResource("RectangleShape2D_iy0hb")
-
-[node name="Moeda3" type="Area2D" parent="Coletaveis"]
-position = Vector2(149, 8)
-script = ExtResource("13_j25s3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Coletaveis/Moeda3"]
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("13_xr8jq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coletaveis/Moeda3"]
-shape = SubResource("RectangleShape2D_iy0hb")
+[node name="Moeda6" parent="Coletaveis" instance=ExtResource("2_taxlc")]
+position = Vector2(342, -27)
 
 [node name="Inimigos" type="Node" parent="."]
 
@@ -1546,14 +1505,3 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[connection signal="area_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_area_entered"]
-[connection signal="body_entered" from="Coletaveis/Moeda" to="Coletaveis/Moeda" method="_on_body_entered"]
-[connection signal="area_entered" from="Coletaveis/Moeda4" to="Coletaveis/Moeda4" method="_on_area_entered"]
-[connection signal="body_entered" from="Coletaveis/Moeda4" to="Coletaveis/Moeda4" method="_on_body_entered"]
-[connection signal="area_entered" from="Coletaveis/Moeda5" to="Coletaveis/Moeda5" method="_on_area_entered"]
-[connection signal="body_entered" from="Coletaveis/Moeda5" to="Coletaveis/Moeda5" method="_on_body_entered"]
-[connection signal="area_entered" from="Coletaveis/Moeda2" to="Coletaveis/Moeda2" method="_on_area_entered"]
-[connection signal="body_entered" from="Coletaveis/Moeda2" to="Coletaveis/Moeda2" method="_on_body_entered"]
-[connection signal="area_entered" from="Coletaveis/Moeda3" to="Coletaveis/Moeda3" method="_on_area_entered"]
-[connection signal="body_entered" from="Coletaveis/Moeda3" to="Coletaveis/Moeda3" method="_on_body_entered"]

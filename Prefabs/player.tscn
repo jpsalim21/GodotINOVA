@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dcoru4ru24o04"]
+[gd_scene load_steps=49 format=3 uid="uid://dcoru4ru24o04"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_wj2id"]
 [ext_resource type="Texture2D" uid="uid://bwymife0cgidb" path="res://Sprites/Personagem/Attack-01-Sheet.png" id="2_yf24i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/LifeController.gd" id="8_j6hsj"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="9_ppkoe"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="10_xrp5m"]
+[ext_resource type="AudioStream" uid="uid://bhaski84tdqlm" path="res://Sons/03_Step_grass_03.wav" id="11_3ynh3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_if1qv"]
 radius = 7.0
@@ -342,6 +343,9 @@ dano = 1
 position = Vector2(27.25, 0.25)
 shape = SubResource("RectangleShape2D_ktpjh")
 disabled = true
+
+[node name="Som" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3ynh3")
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyotteTime" to="." method="_on_coyotte_time_timeout"]
