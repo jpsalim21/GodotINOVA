@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
 [ext_resource type="PackedScene" uid="uid://12yhscyk5v85" path="res://Prefabs/moeda.tscn" id="2_taxlc"]
-[ext_resource type="Texture2D" uid="uid://dy8gglsx36i5s" path="res://Sprites/Background.png" id="5_r3u66"]
+[ext_resource type="Texture2D" uid="uid://dy8gglsx36i5s" path="res://Sprites/Background/Background.png" id="5_r3u66"]
 [ext_resource type="PackedScene" uid="uid://dcoru4ru24o04" path="res://Prefabs/player.tscn" id="6_mlxbd"]
 [ext_resource type="PackedScene" uid="uid://dwuga80ho5npi" path="res://Prefabs/inimigo.tscn" id="7_e5y33"]
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="15_n36ye"]
@@ -1435,6 +1435,7 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 
 [node name="Fundo" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Fundo"]
 anchors_preset = 15
