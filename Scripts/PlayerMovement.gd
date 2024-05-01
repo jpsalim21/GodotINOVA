@@ -32,8 +32,10 @@ var jumpSound = preload("res://Sons/30_Jump_03.wav")
 var hitSound = preload("res://Sons/61_Hit_03.wav")
 
 @onready var sound = $Som
+var spawnPoint : Vector2 = Vector2.ZERO
 
 func _ready():
+	spawnPoint = position
 	life.morreu.connect(_morrer)
 	life.tomouDano.connect(tomouHit)
 	pass
@@ -145,4 +147,10 @@ func _morrer():
 	anim.position = Vector2(9, 7)
 	anim.play("Die")
 	set_physics_process(false)
+	await get_tree().create_timer(1).timeout
+	position = spawnPoint
+	anim.position = Vector2.ZERO
+	animationLock = false
+	life.alterarVida(10, 0)
+	set_physics_process(true)
 	pass

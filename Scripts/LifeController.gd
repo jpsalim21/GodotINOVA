@@ -16,9 +16,15 @@ func _ready():
 
 func alterarVida(qtd : int, dir):
 	_vida = _vida + qtd
+	if _vida > _vidaMax: 
+		_vida = _vidaMax
+		morto = false
+	
 	if(qtd < 0):
 		if(_vida <= 0):
+			_vida = 0
 			if not morto:
 				morreu.emit()
 				morto = true
-		tomouDano.emit(_vida, dir)
+	
+	tomouDano.emit(_vida, dir)

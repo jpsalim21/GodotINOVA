@@ -9,6 +9,7 @@ class_name LifeUI extends Control
 ]
 
 func atualizaVidaUI(vidaAtual, dir):
+	print("Chamou dano")
 	for i in range(0, vidaAtual):
 		hearts[i].visible = true
 	
