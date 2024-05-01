@@ -1435,7 +1435,6 @@ sources/0 = SubResource("TileSetAtlasSource_j4wtj")
 
 [node name="Fundo" type="CanvasLayer" parent="."]
 layer = -1
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Fundo"]
 anchors_preset = 15
