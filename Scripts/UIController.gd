@@ -5,9 +5,10 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var gc : GameController = %GameController
 	var player = %Player/LifeController
-	if gc:
-		gc.pegouMoeda.connect(pontuacao.atualizarMoedas)
+	if GC:
+		GC.pegouMoeda.connect(pontuacao.atualizarMoedas)
+		print(GC.moedas)
+		pontuacao.atualizarMoedas(GC.moedas)
 	if player:
 		player.tomouDano.connect(life.atualizaVidaUI)

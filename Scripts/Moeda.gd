@@ -9,7 +9,7 @@ var pego = false
 func _on_body_entered(body):
 	if pego: return
 	if body.name == "Player":
-		if %GameController: %GameController.aumentarMoedas(valor)
+		if GC: GC.aumentarMoedas(valor)
 		som.play()
 		pego = true
 		visible = false

@@ -16,6 +16,10 @@ run/main_scene="res://Cenas/MenuInicial.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GC="*res://Scripts/GameController.gd"
+
 [display]
 
 window/stretch/mode="viewport"

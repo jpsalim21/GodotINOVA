@@ -42,7 +42,7 @@ func _flip():
 func morrer():
 	queue_free()
 
-func tomouHit(vida, dir):
+func tomouHit(_vida, dir):
 	hitTimer.start()
 	hitSpeed = abs(hitSpeed) * dir
 	movimentando = false

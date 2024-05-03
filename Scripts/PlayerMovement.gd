@@ -40,7 +40,7 @@ func _ready():
 	life.tomouDano.connect(tomouHit)
 	pass
 
-func tomouHit(vida, dir):
+func tomouHit(_vida, _dir):
 	sound.stream = hitSound
 	sound.play()
 
