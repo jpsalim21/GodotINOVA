@@ -8,7 +8,6 @@ func _ready():
 	var player = %Player/LifeController
 	if GC:
 		GC.pegouMoeda.connect(pontuacao.atualizarMoedas)
-		print(GC.moedas)
 		pontuacao.atualizarMoedas(GC.moedas)
 	if player:
 		player.tomouDano.connect(life.atualizaVidaUI)
