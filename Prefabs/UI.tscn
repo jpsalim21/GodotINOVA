@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca4a01y4ppqp4"]
+[gd_scene load_steps=8 format=3 uid="uid://ca4a01y4ppqp4"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwxt33bdit1" path="res://Sprites/UI/Misc/Heart.png" id="1_1lbde"]
 [ext_resource type="Script" path="res://Scripts/UIController.gd" id="1_v7f32"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/LifeUI.gd" id="2_m3mx4"]
 [ext_resource type="Script" path="res://Scripts/UIMoedas.gd" id="2_v2jxl"]
 [ext_resource type="FontFile" uid="uid://5ean8rxmtb5" path="res://Sprites/alagard.ttf" id="6_xj36x"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="7_0g6ly"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_v7f32")
@@ -114,3 +115,102 @@ text = "0
 "
 fit_content = true
 scroll_active = false
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_0g6ly")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]Pause"
+fit_content = true
+
+[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Resume"
+
+[node name="Configuracoes" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Configurações"
+
+[node name="Voltar" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Voltar"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Volume master"
+fit_content = true
+
+[node name="MasterVol" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Volume música"
+fit_content = true
+
+[node name="MusicVol" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Volume Efeitos
+"
+fit_content = true
+
+[node name="EffectVol" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="VoltarConfig" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Voltar"
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Configuracoes" to="PauseMenu" method="_on_configuracoes_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Voltar" to="PauseMenu" method="_on_voltar_pressed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer2/MasterVol" to="PauseMenu" method="_on_master_vol_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer2/MusicVol" to="PauseMenu" method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer2/EffectVol" to="PauseMenu" method="_on_effect_vol_value_changed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer2/VoltarConfig" to="PauseMenu" method="_on_voltar_config_pressed"]

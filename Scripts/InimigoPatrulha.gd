@@ -19,6 +19,7 @@ func _ready():
 	var life : LifeController = $LifeController
 	life.morreu.connect(morrer)
 	life.tomouDano.connect(tomouHit)
+	GC.pausando.connect(pausar)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -50,3 +51,6 @@ func tomouHit(_vida, dir):
 func _on_hit_timer_timeout():
 	movimentando = true
 	pass # Replace with function body.
+
+func pausar(estaPausado):
+	set_physics_process(not estaPausado)

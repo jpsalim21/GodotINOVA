@@ -346,6 +346,7 @@ disabled = true
 
 [node name="Som" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_3ynh3")
+bus = &"SFX"
 
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="CoyotteTime" to="." method="_on_coyotte_time_timeout"]

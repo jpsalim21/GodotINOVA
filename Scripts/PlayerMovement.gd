@@ -38,6 +38,7 @@ func _ready():
 	spawnPoint = position
 	life.morreu.connect(_morrer)
 	life.tomouDano.connect(tomouHit)
+	GC.pausando.connect(pausar)
 	pass
 
 func tomouHit(_vida, _dir):
@@ -154,3 +155,6 @@ func _morrer():
 	life.alterarVida(10, 0)
 	set_physics_process(true)
 	pass
+
+func pausar(estaPausado):
+	set_physics_process(not estaPausado)
