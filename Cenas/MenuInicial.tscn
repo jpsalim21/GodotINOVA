@@ -86,5 +86,87 @@ theme_override_fonts/font = ExtResource("1_lekon")
 theme_override_font_sizes/font_size = 61
 text = "Sair"
 
+[node name="ConfigMenu" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Volume master"
+fit_content = true
+
+[node name="MasterVol" type="HSlider" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Volume música"
+fit_content = true
+
+[node name="MusicVol" type="HSlider" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Volume Efeitos
+"
+fit_content = true
+
+[node name="EffectVol" type="HSlider" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="WindowSize" type="OptionButton" parent="MarginContainer/ConfigMenu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "1152 x 648"
+popup/item_0/id = 0
+popup/item_1/text = "1280 x 728"
+popup/item_1/id = 1
+popup/item_2/text = "1920 x 1080"
+popup/item_2/id = 2
+
+[node name="WindowMode" type="OptionButton" parent="MarginContainer/ConfigMenu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+item_count = 4
+selected = 0
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Window"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless window"
+popup/item_2/id = 2
+popup/item_3/text = "Borderless Fullscreen"
+popup/item_3/id = 3
+
+[node name="VoltarConfig" type="Button" parent="MarginContainer/ConfigMenu"]
+layout_mode = 2
+theme = ExtResource("2_8p1tq")
+theme_override_fonts/font = ExtResource("1_lekon")
+theme_override_font_sizes/font_size = 40
+text = "Voltar"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Jogar" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Opcoes" to="." method="_on_opcoes_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="value_changed" from="MarginContainer/ConfigMenu/MasterVol" to="." method="_on_master_vol_value_changed"]
+[connection signal="value_changed" from="MarginContainer/ConfigMenu/MusicVol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="MarginContainer/ConfigMenu/EffectVol" to="." method="_on_effect_vol_value_changed"]
+[connection signal="item_selected" from="MarginContainer/ConfigMenu/WindowSize" to="." method="_on_window_size_item_selected"]
+[connection signal="item_selected" from="MarginContainer/ConfigMenu/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="pressed" from="MarginContainer/ConfigMenu/VoltarConfig" to="." method="_on_voltar_config_pressed"]

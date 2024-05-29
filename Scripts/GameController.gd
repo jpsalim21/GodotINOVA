@@ -2,6 +2,12 @@ class_name GameController extends Node2D
 
 var moedas : int = 0
 
+const resolucoes : Dictionary = {
+	"1152 x 648": Vector2i(1152, 648),
+	"1280 x 728": Vector2i(1280, 728),
+	"1920 x 1080": Vector2i(1920, 1080)
+}
+
 signal pausando(estaPausado)
 signal pegouMoeda(int)
 
