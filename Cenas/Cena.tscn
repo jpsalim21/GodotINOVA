@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgrprgbwgcknc"]
+[gd_scene load_steps=17 format=3 uid="uid://bgrprgbwgcknc"]
 
 [ext_resource type="PackedScene" uid="uid://ca4a01y4ppqp4" path="res://Prefabs/UI.tscn" id="1_n0mgs"]
 [ext_resource type="Texture2D" uid="uid://b76gxup34m5yy" path="res://Sprites/Tiles.png" id="1_xj1ym"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://5ean8rxmtb5" path="res://Sprites/alagard.ttf" id="9_3jqka"]
 [ext_resource type="Script" path="res://Scripts/SavePoint.gd" id="9_h4khx"]
 [ext_resource type="Script" path="res://Scripts/SaveSystem.gd" id="11_l7wd2"]
+[ext_resource type="AudioStream" uid="uid://cppydv356w8ow" path="res://Sons/Musica.mp3" id="12_onog6"]
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="15_n36ye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4wtj"]
@@ -1570,6 +1571,11 @@ shape = SubResource("RectangleShape2D_03xyh")
 [node name="SaveSystem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_l7wd2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_onog6")
+autoplay = true
+bus = &"Musica"
 
 [connection signal="body_entered" from="PontoFinal/Area2D" to="PontoFinal" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="SavePoint/Area2D" to="SavePoint" method="_on_area_2d_body_entered"]

@@ -22,7 +22,6 @@ func save():
 	
 	file.store_string(json)
 	file.close()
-	print("Saved")
 
 func loadFile():
 	if not FileAccess.file_exists(savePath):
@@ -36,4 +35,4 @@ func loadFile():
 	
 	player.global_position.x = saveData["position:x"]
 	player.global_position.y = saveData["position:y"]
-	print("Loaded")
+	file.close()

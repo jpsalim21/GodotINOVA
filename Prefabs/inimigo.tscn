@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwuga80ho5npi"]
 
-[ext_resource type="Script" path="res://Scripts/InimigoPatrulha.gd" id="1_hn7ma"]
+[ext_resource type="Script" path="res://Scripts/Personagem/InimigoPatrulha.gd" id="1_hn7ma"]
 [ext_resource type="Texture2D" uid="uid://drc7277m4us8l" path="res://icon.svg" id="2_fqixm"]
-[ext_resource type="Script" path="res://Scripts/FlashSprite.gd" id="3_5smcm"]
-[ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="4_twtvb"]
-[ext_resource type="Script" path="res://Scripts/LifeController.gd" id="5_bn52q"]
-[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="6_tldqu"]
+[ext_resource type="Script" path="res://Scripts/Personagem/FlashSprite.gd" id="3_5smcm"]
+[ext_resource type="Script" path="res://Scripts/Personagem/Hitbox.gd" id="4_twtvb"]
+[ext_resource type="Script" path="res://Scripts/Personagem/LifeController.gd" id="5_bn52q"]
+[ext_resource type="Script" path="res://Scripts/Personagem/Hurtbox.gd" id="6_tldqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llh55"]
 size = Vector2(30, 30)
