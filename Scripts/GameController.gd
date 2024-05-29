@@ -26,9 +26,9 @@ func saveConfig():
 	var file = FileAccess.open(configPath, FileAccess.WRITE)
 	
 	var configData = {}
-	configData["volMax"] = AudioServer.
-	configData["volMus"] = volMus
-	configData["volSFX"] = volSFX
+	configData["volMax"] = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	configData["volMus"] = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica"))
+	configData["volSFX"] = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
 	
 	var json = JSON.stringify(configData)
 	

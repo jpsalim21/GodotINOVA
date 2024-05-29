@@ -32,6 +32,7 @@ func _on_voltar_pressed():
 	get_tree().change_scene_to_file("res://Cenas/MenuInicial.tscn")
 
 func _on_voltar_config_pressed():
+	GC.saveConfig()
 	menuMaster.visible = true
 	configuracoes.visible = false
 
